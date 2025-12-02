@@ -1,0 +1,112 @@
+/**
+ * HealthCheck Component Styles
+ *
+ * These styles make the health check status look nice and clean
+ */
+
+.health-check-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.health-check-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.health-check-card h2 {
+  color: #333;
+  margin: 0 0 30px 0;
+  font-size: 24px;
+}
+
+/* Loading State Styles */
+.status-loading {
+  animation: pulse 1.5s infinite;
+}
+
+.status-loading p {
+  color: #666;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+/* Success State Styles */
+.status-success {
+  color: #27ae60;
+}
+
+.status-indicator {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.backend-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.backend-info p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.backend-info strong {
+  color: #333;
+}
+
+/* Error State Styles */
+.status-error {
+  color: #e74c3c;
+}
+
+.error-message {
+  background: #fadbd8;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-size: 14px;
+  color: #c0392b;
+}
+
+.retry-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #2980b9;
+}
+
+/* Animation for loading state */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

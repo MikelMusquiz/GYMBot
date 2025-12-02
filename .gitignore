@@ -1,0 +1,52 @@
+# Spring Boot / Maven
+target/
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Node.js / npm
+node_modules/
+npm-debug.log
+npm-debug.log.*
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# Vite
+dist/
+.vite/
+
+# Environment variables (don't commit)
+.env
+.env.local
+.env.*.local
+
+# IDE / Editor files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# OS specific
+.DS_Store
+desktop.ini
+
+# Database / Data files (for development)
+*.db
+*.sqlite
+data/exercises.json  # Optional: if you want to keep sample data, remove this line
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# AI Agent files
+.claude/
