@@ -1,0 +1,43 @@
+[ {
+  "id" : "b2b147e8-07b5-41d5-a3ae-bcb6b8c52a16",
+  "name" : "Bench Press",
+  "maxReps" : 10,
+  "weekNumber" : 1,
+  "category" : "PUSH"
+}, {
+  "id" : "a64591bd-51cc-4e6c-b9f1-c075f6ab6152",
+  "name" : "Bench Press",
+  "maxReps" : 12,
+  "weekNumber" : 2,
+  "category" : "PUSH"
+}, {
+  "id" : "5aeb698d-8076-4b08-b31d-0df463c55e86",
+  "name" : "Squats",
+  "maxReps" : 15,
+  "weekNumber" : 1,
+  "category" : "LEG"
+}, {
+  "id" : "853148eb-41c2-4877-9dae-c51b107a0156",
+  "name" : "Pull-ups",
+  "maxReps" : 8,
+  "weekNumber" : 1,
+  "category" : "PULL"
+}, {
+  "id" : "81e0b2e1-6aad-4e4b-8d50-c9c9d5ae0026",
+  "name" : "Bench Press",
+  "maxReps" : 0,
+  "weekNumber" : 3,
+  "category" : "PUSH"
+}, {
+  "id" : "c7bd05f3-34df-4f26-b045-1ef61ff6aa5f",
+  "name" : "Squats",
+  "maxReps" : 0,
+  "weekNumber" : 3,
+  "category" : "LEG"
+}, {
+  "id" : "0f56fbbc-07d8-4dcb-bd56-b8ddba5cc751",
+  "name" : "Pull-ups",
+  "maxReps" : 0,
+  "weekNumber" : 3,
+  "category" : "PULL"
+} ]

@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "gymbot-api-collection",
+		"name": "GYMBot API",
+		"description": "Complete API collection for GYMBot - Fitness Tracking Application\n\nThis collection includes all available endpoints for managing exercises and health checks.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Check Backend Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/health/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"health",
+								"check"
+							]
+						},
+						"description": "Verify that the backend server is running and healthy."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Application Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/health/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"health",
+								"info"
+							]
+						},
+						"description": "Get detailed information about the application including name, version, and available features."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints to check backend health and status"
+		},
+		{
+			"name": "Exercises",
+			"item": [
+				{
+					"name": "Get All Exercises",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Retrieve all exercises in the system."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercises Grouped by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/grouped",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								"grouped"
+							]
+						},
+						"description": "Get exercises grouped by category (PUSH, PULL, LEG)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercise by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b2b147e8-07b5-41d5-a3ae-bcb6b8c52a16",
+									"description": "Exercise ID (UUID)"
+								}
+							]
+						},
+						"description": "Retrieve a specific exercise by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercises by Week",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/week/:weekNumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								"week",
+								":weekNumber"
+							],
+							"variable": [
+								{
+									"key": "weekNumber",
+									"value": "1",
+									"description": "Week number (integer)"
+								}
+							]
+						},
+						"description": "Get all exercises for a specific week number."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercises by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/category/:category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								"category",
+								":category"
+							],
+							"variable": [
+								{
+									"key": "category",
+									"value": "PUSH",
+									"description": "Category: PUSH, PULL, or LEG"
+								}
+							]
+						},
+						"description": "Get all exercises in a specific category (PUSH, PULL, or LEG)."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Bench Press",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 10,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Bench Press exercise entry for week 1."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Squats",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Squats\",\n  \"maxReps\": 15,\n  \"weekNumber\": 1,\n  \"category\": \"LEG\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Squats exercise entry for week 1."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Pull-ups",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pull-ups\",\n  \"maxReps\": 8,\n  \"weekNumber\": 1,\n  \"category\": \"PULL\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Pull-ups exercise entry for week 1."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Deadlift",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Deadlift\",\n  \"maxReps\": 5,\n  \"weekNumber\": 1,\n  \"category\": \"PULL\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Deadlift exercise entry for week 1."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Overhead Press",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Overhead Press\",\n  \"maxReps\": 8,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Overhead Press exercise entry for week 1."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Exercise - Leg Press",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Leg Press\",\n  \"maxReps\": 12,\n  \"weekNumber\": 2,\n  \"category\": \"LEG\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Create a new Leg Press exercise entry for week 2."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 12,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b2b147e8-07b5-41d5-a3ae-bcb6b8c52a16",
+									"description": "Exercise ID to update"
+								}
+							]
+						},
+						"description": "Update an existing exercise. Provide the complete exercise object with updated values."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exercise",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b2b147e8-07b5-41d5-a3ae-bcb6b8c52a16",
+									"description": "Exercise ID to delete"
+								}
+							]
+						},
+						"description": "Delete a specific exercise by its ID."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD operations for exercise management"
+		},
+		{
+			"name": "Bulk Operations",
+			"item": [
+				{
+					"name": "Create Week 1 - Full Push Pull Leg",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\"name\": \"Bench Press\", \"maxReps\": 10, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Overhead Press\", \"maxReps\": 8, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Dips\", \"maxReps\": 12, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Pull-ups\", \"maxReps\": 8, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Deadlift\", \"maxReps\": 5, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Barbell Row\", \"maxReps\": 10, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Squats\", \"maxReps\": 15, \"weekNumber\": 1, \"category\": \"LEG\"},\n  {\"name\": \"Leg Press\", \"maxReps\": 20, \"weekNumber\": 1, \"category\": \"LEG\"},\n  {\"name\": \"Lunges\", \"maxReps\": 12, \"weekNumber\": 1, \"category\": \"LEG\"}\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises"
+							]
+						},
+						"description": "Note: This is a template. You'll need to send each request individually or use a pre-request script to loop through the array."
+					},
+					"response": []
+				}
+			],
+			"description": "Examples for bulk operations and seeding data"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "apiPath",
+			"value": "/api",
+			"type": "string"
+		}
+	]
+}
