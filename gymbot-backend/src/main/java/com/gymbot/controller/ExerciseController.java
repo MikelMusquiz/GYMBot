@@ -27,6 +27,11 @@ public class ExerciseController {
         return ResponseEntity.ok(exerciseService.getExercisesGroupedByCategory());
     }
 
+    @GetMapping("/grouped/week")
+    public ResponseEntity<Map<Integer, List<Exercise>>> getExercisesGroupedByWeek() {
+        return ResponseEntity.ok(exerciseService.getExercisesGroupedByWeek());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Exercise> getExerciseById(@PathVariable String id) {
         Exercise exercise = exerciseService.getExerciseById(id);

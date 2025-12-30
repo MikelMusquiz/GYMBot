@@ -1,27 +1,38 @@
 package com.gymbot.model;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class Exercise {
     private String id;
     private String name;
     private Integer maxReps;
-    private Integer weekNumber;
+    private Week week;
     private String category; // "PUSH", "PULL", or "LEG"
 
     public Exercise() {
     }
 
-    public Exercise(String name, Integer maxReps, Integer weekNumber, String category) {
+    // Backward compatibility: Handle old weekNumber field
+    @JsonSetter("weekNumber")
+    public void setWeekNumber(Integer weekNumber) {
+        if (weekNumber != null) {
+            this.week = new Week();
+            this.week.setWeekNumber(weekNumber);
+        }
+    }
+
+    public Exercise(String name, Integer maxReps, Week week, String category) {
         this.name = name;
         this.maxReps = maxReps;
-        this.weekNumber = weekNumber;
+        this.week = week;
         this.category = category;
     }
 
-    public Exercise(String id, String name, Integer maxReps, Integer weekNumber, String category) {
+    public Exercise(String id, String name, Integer maxReps, Week week, String category) {
         this.id = id;
         this.name = name;
         this.maxReps = maxReps;
-        this.weekNumber = weekNumber;
+        this.week = week;
         this.category = category;
     }
 
@@ -49,12 +60,12 @@ public class Exercise {
         this.maxReps = maxReps;
     }
 
-    public Integer getWeekNumber() {
-        return weekNumber;
+    public Week getWeek() {
+        return week;
     }
 
-    public void setWeekNumber(Integer weekNumber) {
-        this.weekNumber = weekNumber;
+    public void setWeek(Week week) {
+        this.week = week;
     }
 
     public String getCategory() {

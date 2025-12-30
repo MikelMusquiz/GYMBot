@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { healthApi, handleApiError } from '../services/api';
+import type { HealthInfoResponse } from '../types';
 import '../styles/HealthCheck.css';
+
+type Status = 'loading' | 'connected' | 'error';
 
 /**
  * HealthCheck Component
@@ -21,11 +24,36 @@ import '../styles/HealthCheck.css';
 function HealthCheck() {
   // State variables to track component data
   // status: 'loading', 'connected', 'error'
-  const [status, setStatus] = useState('loading');
+  const [status, setStatus] = useState<Status>('loading');
   // Error message to display if connection fails
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   // Backend information if connection succeeds
-  const [backendInfo, setBackendInfo] = useState(null);
+  const [backendInfo, setBackendInfo] = useState<HealthInfoResponse | null>(null);
+
+  /**
+   * Check if backend is running and respond
+   */
+  const checkBackendConnection = async (): Promise<void> => {
+    try {
+      // Send request to backend health check endpoint
+      console.log('Checking backend connection...');
+      await healthApi.check();
+
+      // If successful, get more info
+      const infoResponse = await healthApi.info();
+
+      // Update state with success data
+      setStatus('connected');
+      setBackendInfo(infoResponse.data);
+      console.log('✓ Backend connection successful!');
+    } catch (error: unknown) {
+      // If failed, show error message
+      const errorMsg = handleApiError(error);
+      setStatus('error');
+      setErrorMessage(errorMsg);
+      console.error('✗ Backend connection failed:', errorMsg);
+    }
+  };
 
   /**
    * useEffect Hook - Runs when component mounts (appears on page)
@@ -36,33 +64,9 @@ function HealthCheck() {
    * - Empty dependency array [] means it runs once on mount
    */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     checkBackendConnection();
   }, []);
-
-  /**
-   * Check if backend is running and respond
-   */
-  const checkBackendConnection = async () => {
-    try {
-      // Send request to backend health check endpoint
-      console.log('Checking backend connection...');
-      const response = await healthApi.check();
-
-      // If successful, get more info
-      const infoResponse = await healthApi.info();
-
-      // Update state with success data
-      setStatus('connected');
-      setBackendInfo(infoResponse.data);
-      console.log('✓ Backend connection successful!');
-    } catch (error) {
-      // If failed, show error message
-      const errorMsg = handleApiError(error);
-      setStatus('error');
-      setErrorMessage(errorMsg);
-      console.error('✗ Backend connection failed:', errorMsg);
-    }
-  };
 
   /**
    * Render different UI based on connection status

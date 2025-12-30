@@ -97,7 +97,7 @@ public class ExerciseService {
 
     public List<Exercise> getExercisesByWeek(Integer weekNumber) {
         return loadExercises().stream()
-                .filter(ex -> ex.getWeekNumber().equals(weekNumber))
+                .filter(ex -> ex.getWeek() != null && ex.getWeek().getWeekNumber().equals(weekNumber))
                 .collect(Collectors.toList());
     }
 
@@ -105,5 +105,12 @@ public class ExerciseService {
         return loadExercises().stream()
                 .filter(ex -> ex.getCategory().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
+    }
+
+    public Map<Integer, List<Exercise>> getExercisesGroupedByWeek() {
+        List<Exercise> exercises = loadExercises();
+        return exercises.stream()
+                .filter(ex -> ex.getWeek() != null)
+                .collect(Collectors.groupingBy(ex -> ex.getWeek().getWeekNumber()));
     }
 }

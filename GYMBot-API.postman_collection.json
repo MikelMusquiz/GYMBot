@@ -103,6 +103,29 @@
 					"response": []
 				},
 				{
+					"name": "Get Exercises Grouped by Week",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/exercises/grouped/week",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exercises",
+								"grouped",
+								"week"
+							]
+						},
+						"description": "Get exercises grouped by week number."
+					},
+					"response": []
+				},
+				{
 					"name": "Get Exercise by ID",
 					"request": {
 						"method": "GET",
@@ -192,7 +215,7 @@
 					"response": []
 				},
 				{
-					"name": "Create Exercise - Bench Press",
+					"name": "Create Exercise",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -203,7 +226,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 10,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
+							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 10,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PUSH\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/exercises",
@@ -217,159 +240,202 @@
 								"exercises"
 							]
 						},
-						"description": "Create a new Bench Press exercise entry for week 1."
+						"description": "Create a new exercise. Check the Examples dropdown for different exercise types (PUSH, PULL, LEG)."
 					},
-					"response": []
-				},
-				{
-					"name": "Create Exercise - Squats",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Squats\",\n  \"maxReps\": 15,\n  \"weekNumber\": 1,\n  \"category\": \"LEG\"\n}"
+					"response": [
+						{
+							"name": "Example - Bench Press (PUSH)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 10,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PUSH\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
 						},
-						"url": {
-							"raw": "http://localhost:8080/api/exercises",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"exercises"
-							]
+						{
+							"name": "Example - Squats (LEG)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Squats\",\n  \"maxReps\": 15,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"LEG\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
 						},
-						"description": "Create a new Squats exercise entry for week 1."
-					},
-					"response": []
-				},
-				{
-					"name": "Create Exercise - Pull-ups",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Pull-ups\",\n  \"maxReps\": 8,\n  \"weekNumber\": 1,\n  \"category\": \"PULL\"\n}"
+						{
+							"name": "Example - Pull-ups (PULL)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Pull-ups\",\n  \"maxReps\": 8,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PULL\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
 						},
-						"url": {
-							"raw": "http://localhost:8080/api/exercises",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"exercises"
-							]
+						{
+							"name": "Example - Deadlift (PULL)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Deadlift\",\n  \"maxReps\": 5,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PULL\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
 						},
-						"description": "Create a new Pull-ups exercise entry for week 1."
-					},
-					"response": []
-				},
-				{
-					"name": "Create Exercise - Deadlift",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Deadlift\",\n  \"maxReps\": 5,\n  \"weekNumber\": 1,\n  \"category\": \"PULL\"\n}"
+						{
+							"name": "Example - Overhead Press (PUSH)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Overhead Press\",\n  \"maxReps\": 8,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PUSH\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
 						},
-						"url": {
-							"raw": "http://localhost:8080/api/exercises",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"exercises"
-							]
-						},
-						"description": "Create a new Deadlift exercise entry for week 1."
-					},
-					"response": []
-				},
-				{
-					"name": "Create Exercise - Overhead Press",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Overhead Press\",\n  \"maxReps\": 8,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/exercises",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"exercises"
-							]
-						},
-						"description": "Create a new Overhead Press exercise entry for week 1."
-					},
-					"response": []
-				},
-				{
-					"name": "Create Exercise - Leg Press",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Leg Press\",\n  \"maxReps\": 12,\n  \"weekNumber\": 2,\n  \"category\": \"LEG\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/exercises",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"exercises"
-							]
-						},
-						"description": "Create a new Leg Press exercise entry for week 2."
-					},
-					"response": []
+						{
+							"name": "Example - Leg Press Week 2 (LEG)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Leg Press\",\n  \"maxReps\": 12,\n  \"week\": {\n    \"weekNumber\": 2,\n    \"startDate\": \"2025-01-13\",\n    \"endDate\": \"2025-01-19\",\n    \"goal\": \"Progressive overload\"\n  },\n  \"category\": \"LEG\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/exercises",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"exercises"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
 				},
 				{
 					"name": "Update Exercise",
@@ -383,7 +449,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 12,\n  \"weekNumber\": 1,\n  \"category\": \"PUSH\"\n}"
+							"raw": "{\n  \"name\": \"Bench Press\",\n  \"maxReps\": 12,\n  \"week\": {\n    \"weekNumber\": 1,\n    \"startDate\": \"2025-01-06\",\n    \"endDate\": \"2025-01-12\",\n    \"goal\": \"Build strength foundation\"\n  },\n  \"category\": \"PUSH\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/exercises/:id",
@@ -456,7 +522,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\"name\": \"Bench Press\", \"maxReps\": 10, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Overhead Press\", \"maxReps\": 8, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Dips\", \"maxReps\": 12, \"weekNumber\": 1, \"category\": \"PUSH\"},\n  {\"name\": \"Pull-ups\", \"maxReps\": 8, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Deadlift\", \"maxReps\": 5, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Barbell Row\", \"maxReps\": 10, \"weekNumber\": 1, \"category\": \"PULL\"},\n  {\"name\": \"Squats\", \"maxReps\": 15, \"weekNumber\": 1, \"category\": \"LEG\"},\n  {\"name\": \"Leg Press\", \"maxReps\": 20, \"weekNumber\": 1, \"category\": \"LEG\"},\n  {\"name\": \"Lunges\", \"maxReps\": 12, \"weekNumber\": 1, \"category\": \"LEG\"}\n]"
+							"raw": "[\n  {\"name\": \"Bench Press\", \"maxReps\": 10, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PUSH\"},\n  {\"name\": \"Overhead Press\", \"maxReps\": 8, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PUSH\"},\n  {\"name\": \"Dips\", \"maxReps\": 12, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PUSH\"},\n  {\"name\": \"Pull-ups\", \"maxReps\": 8, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PULL\"},\n  {\"name\": \"Deadlift\", \"maxReps\": 5, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PULL\"},\n  {\"name\": \"Barbell Row\", \"maxReps\": 10, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"PULL\"},\n  {\"name\": \"Squats\", \"maxReps\": 15, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"LEG\"},\n  {\"name\": \"Leg Press\", \"maxReps\": 20, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"LEG\"},\n  {\"name\": \"Lunges\", \"maxReps\": 12, \"week\": {\"weekNumber\": 1, \"startDate\": \"2025-01-06\", \"endDate\": \"2025-01-12\", \"goal\": \"Build strength foundation\"}, \"category\": \"LEG\"}\n]"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/exercises",

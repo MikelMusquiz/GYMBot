@@ -1,0 +1,395 @@
+.exercise-table-container {
+  padding: 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* AG Grid Custom Styling */
+.ag-theme-alpine {
+  --ag-header-height: 50px;
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: #495057;
+  --ag-odd-row-background-color: #f8f9fa;
+  --ag-row-hover-color: #e9ecef;
+  --ag-border-color: #dee2e6;
+  font-size: 14px;
+}
+
+.ag-theme-alpine .ag-header-cell {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ag-theme-alpine .category-header-push {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+}
+
+.ag-theme-alpine .category-header-pull {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+}
+
+.ag-theme-alpine .category-header-leg {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+}
+
+.ag-theme-alpine .editable-cell {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.ag-theme-alpine .editable-cell:hover {
+  background-color: #e3f2fd !important;
+}
+
+.ag-theme-alpine .ag-cell-focus {
+  border: 2px solid #007bff !important;
+}
+
+.ag-theme-alpine .ag-cell-inline-editing {
+  border: 2px solid #28a745 !important;
+  background-color: #f0fff4 !important;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-cancel:hover {
+  background: #c82333;
+}
+
+.add-exercise-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px solid #007bff;
+  align-items: center;
+}
+
+.add-exercise-form input,
+.add-exercise-form select {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.add-exercise-form input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.add-exercise-form select {
+  min-width: 120px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state p:first-child {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.empty-state p:last-child {
+  font-size: 16px;
+}
+
+.category-section {
+  margin-bottom: 50px;
+}
+
+.category-header {
+  color: #fff;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  margin: 0 0 0 0;
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.exercise-table th,
+.exercise-table td {
+  padding: 14px 16px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+.exercise-table th {
+  background: #495057;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exercise-name-col {
+  text-align: left;
+  min-width: 180px;
+}
+
+.exercise-name {
+  text-align: left;
+  font-size: 15px;
+}
+
+.week-col {
+  min-width: 100px;
+}
+
+.actions-col {
+  min-width: 120px;
+}
+
+.exercise-table tbody tr:hover {
+  background: #f1f3f5;
+}
+
+.exercise-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.exercise-table tbody tr:nth-child(even):hover {
+  background: #e9ecef;
+}
+
+.reps-cell {
+  background: white;
+}
+
+.reps-input {
+  width: 70px;
+  padding: 8px;
+  border: 2px solid #ced4da;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.reps-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+}
+
+.no-data {
+  color: #adb5bd;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+.error {
+  color: #721c24;
+  background: #f8d7da;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 20px;
+}
+
+/* Exercise Management Section */
+.exercise-management {
+  margin-top: 40px;
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.exercise-management h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.exercise-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s;
+}
+
+.exercise-item:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.category-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.category-push {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.category-pull {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+}
+
+.category-leg {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+}
+
+.exercise-item .exercise-name {
+  font-weight: 500;
+  color: #495057;
+}
+
+.delete-btn-small {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.delete-btn-small:hover {
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .exercise-table-container {
+    padding: 15px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .add-exercise-form {
+    flex-direction: column;
+  }
+
+  .add-exercise-form input {
+    width: 100%;
+  }
+
+  .ag-theme-alpine {
+    font-size: 12px;
+  }
+
+  .exercise-management {
+    padding: 15px;
+  }
+
+  .exercise-list {
+    gap: 8px;
+  }
+
+  .exercise-item {
+    font-size: 13px;
+  }
+}
